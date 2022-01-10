@@ -1,11 +1,13 @@
-import { Avatar, Container, Paper, Typography } from "@material-ui/core";
+import { Avatar, Container, Grid, Paper, Typography } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React from "react";
+import Input from "./Input";
 
 const Auth = () => {
   const isSignup = false;
 
   const handleSubmit = (e) => {};
+  const handleChange = (e) => {};
 
   return (
     <Container maxWidth="sm">
@@ -20,7 +22,37 @@ const Auth = () => {
         <Typography component="h1" variant="h5">
           {isSignup ? "Sign Up" : "Sign In"}
         </Typography>
-        <form className="" onSubmit={handleSubmit}></form>
+        <form className="" onSubmit={handleSubmit}>
+          <Grid container spacing={2}>
+            {isSignup && (
+              <>
+                <Input
+                  name="FirstName"
+                  label="First Name"
+                  onChange={handleChange}
+                />
+                <Input
+                  name="LastName"
+                  label="Last Name"
+                  variant="filled"
+                  onChange={handleChange}
+                />
+              </>
+            )}
+            <Input
+              name="username"
+              label="Username"
+              type="text"
+              onChange={handleChange}
+            />
+            <Input
+              name="password"
+              label="Password"
+              type="text"
+              onChange={handleChange}
+            />
+          </Grid>
+        </form>
       </Paper>
     </Container>
   );
