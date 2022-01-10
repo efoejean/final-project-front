@@ -26,7 +26,16 @@ const Nav = () => {
               Logout
             </Button>
           </div>
-        ) : null}
+        ) : (
+          <Button
+            component={Link}
+            to="/auth"
+            variant="contained"
+            color="secondary"
+          >
+            Sign In
+          </Button>
+        )}
       </Toolbar>
     </AppBar>
   );
