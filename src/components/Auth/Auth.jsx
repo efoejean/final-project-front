@@ -24,8 +24,8 @@ const Auth = () => {
 
   return (
     <Container maxWidth="sm">
-      <Paper className="p-8 m-8 rounded-sm">
-        <Avatar className="content-center ...">
+      <Paper className=" flex flex-col ... items-center ... p-8 m-8 rounded-sm">
+        <Avatar color="inherit" className="">
           <LockOutlinedIcon />
         </Avatar>
         <Typography className="text-center ..." component="h1" variant="h5">
@@ -75,7 +75,7 @@ const Auth = () => {
             )}
           </Grid>
           <div className="flex justify-center mt-2 gap-5">
-            <Button variant="contained" onClick={handleClose}>
+            <Button variant="contained" color="inherit" onClick={handleClose}>
               Cancel
             </Button>
             <Button

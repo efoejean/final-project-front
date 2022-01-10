@@ -6,7 +6,12 @@ const Nav = () => {
   const user = null;
 
   return (
-    <AppBar position="static" color="inherit">
+    <AppBar
+      className="flex flex-row ... justify-between ... rounded-sm -mx-0
+      "
+      position="static"
+      color="inherit"
+    >
       <div>
         <Typography component={Link} to="/" variant="h6">
           {" "}
