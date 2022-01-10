@@ -1,12 +1,8 @@
 import React from "react";
+import Nav from "./components/Nav/nav";
 
 function App() {
-  return (
-    <h1 className="capitalize mt-3 text-3xl text-center text-red-500">
-      {" "}
-      Hello world!{" "}
-    </h1>
-  );
+  return <Nav />;
 }
 
 export default App;
