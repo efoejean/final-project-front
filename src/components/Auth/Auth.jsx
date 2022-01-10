@@ -8,8 +8,11 @@ const Auth = () => {
 
   const handleSubmit = (e) => {};
   const handleChange = (e) => {};
-  const handleShowPassword = (e) => {};
+
   const [showPassword, setshowPassword] = useState(false);
+
+  // toggles the password visibility and passing as a prop to the input component
+  const handleShowPassword = () => setshowPassword((prev) => !prev);
 
   return (
     <Container maxWidth="sm">
@@ -50,9 +53,17 @@ const Auth = () => {
             <Input
               name="password"
               label="Password"
-              type={showPassword ? "text" : "password"}
               handleShowPassword={handleShowPassword}
+              type={showPassword ? "text" : "password"}
             />
+            {isSignup && (
+              <Input
+                name="confirmPassword"
+                label="repeatPassword"
+                handleShowPassword={handleShowPassword}
+                type={showPassword ? "text" : "password"}
+              />
+            )}
           </Grid>
         </form>
       </Paper>
