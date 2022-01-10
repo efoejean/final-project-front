@@ -1,6 +1,6 @@
 import { Avatar, Container, Grid, Paper, Typography } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import React from "react";
+import React, { useState } from "react";
 import Input from "./Input";
 
 const Auth = () => {
@@ -8,6 +8,7 @@ const Auth = () => {
 
   const handleSubmit = (e) => {};
   const handleChange = (e) => {};
+  const [showPassword, setshowPassword] = useState(false);
 
   return (
     <Container maxWidth="sm">
