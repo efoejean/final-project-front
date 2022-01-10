@@ -4,6 +4,9 @@ import React from "react";
 
 const Auth = () => {
   const isSignup = false;
+
+  const handleSubmit = (e) => {};
+
   return (
     <Container maxWidth="sm">
       <Paper className="p-8 m-8 rounded-sm">
@@ -17,7 +20,7 @@ const Auth = () => {
         <Typography component="h1" variant="h5">
           {isSignup ? "Sign Up" : "Sign In"}
         </Typography>
-        <form className=""></form>
+        <form className="" onSubmit={handleSubmit}></form>
       </Paper>
     </Container>
   );
