@@ -8,6 +8,7 @@ const Auth = () => {
 
   const handleSubmit = (e) => {};
   const handleChange = (e) => {};
+  const handleShowPassword = (e) => {};
   const [showPassword, setshowPassword] = useState(false);
 
   return (
@@ -49,8 +50,8 @@ const Auth = () => {
             <Input
               name="password"
               label="Password"
-              type="text"
-              onChange={handleChange}
+              type={showPassword ? "text" : "password"}
+              handleShowPassword={handleShowPassword}
             />
           </Grid>
         </form>
