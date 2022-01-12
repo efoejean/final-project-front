@@ -9,6 +9,8 @@ import {
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import indexAuth from "../api/index";
 
 const Auth = () => {
   // initial state of the form
@@ -20,14 +22,47 @@ const Auth = () => {
     confirmPassword: "",
   };
 
+  const navigate = useNavigate();
   // use useState to set the iniital state of the button
   const [isSignup, setIsSignUp] = useState(false);
 
   const [formData, setFormData] = useState({ intialState });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    if (isSignup) {
+      try {
+        await indexAuth.signup(formData).then(
+          (res) => {
+            console.log("signup success", res);
+            navigate("/Customers");
+            window.location.reload();
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    if (!isSignup) {
+      try {
+        await indexAuth.signin(formData).then(
+          () => {
+            navigate("/Customers");
+            window.location.reload();
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   // spread other properties of the formData object and only change the value of the property that is being changed with the target value
