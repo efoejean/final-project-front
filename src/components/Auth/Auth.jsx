@@ -11,10 +11,6 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React, { useState } from "react";
 
 const Auth = () => {
-  const handleSubmit = (e) => {};
-  const handleChange = (e) => {};
-  const handleClose = () => {};
-
   // initial state of the form
   const intialState = {
     FirstName: "",
@@ -28,6 +24,15 @@ const Auth = () => {
   const [isSignup, setIsSignUp] = useState(false);
 
   const [formData, setFormData] = useState({ intialState });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
+  const handleChange = (e) => {};
+
+  const handleClose = () => {};
 
   // toggles between signup and signin
   const switchAuthMode = () => {
