@@ -30,7 +30,10 @@ const Auth = () => {
     console.log(formData);
   };
 
-  const handleChange = (e) => {};
+  // spread other properties of the formData object and only change the value of the property that is being changed with the target value
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleClose = () => {};
 
