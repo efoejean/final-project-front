@@ -4,23 +4,24 @@ import {
   Container,
   Grid,
   Paper,
+  TextField,
   Typography,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React, { useState } from "react";
-import Input from "./Input";
 
 const Auth = () => {
-  const isSignup = false;
-
   const handleSubmit = (e) => {};
   const handleChange = (e) => {};
   const handleClose = () => {};
 
-  const [showPassword, setshowPassword] = useState(false);
+  // use useState to set the iniital state of the button
+  const [isSignup, setIsSignUp] = useState(false);
 
-  // toggles the password visibility and passing as a prop to the input component
-  const handleShowPassword = () => setshowPassword((prev) => !prev);
+  // toggles between signup and signin
+  const switchAuthMode = () => {
+    setIsSignUp((prev) => !prev);
+  };
 
   return (
     <Container maxWidth="sm">
@@ -31,50 +32,60 @@ const Auth = () => {
         <Typography className="text-center ..." component="h1" variant="h5">
           {isSignup ? "Sign Up" : "Sign In"}
         </Typography>
-        <form className="" onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
+        <form className="m-9 " onSubmit={handleSubmit}>
+          <Grid className="gap-5" container spacing={2}>
             {isSignup && (
               <>
-                <Input
+                <TextField
                   name="FirstName"
                   label="First Name"
-                  placeholder="First Name"
+                  variant="outlined"
+                  fullWidth
                   onChange={handleChange}
+                  required
                 />
-                <Input
+
+                <TextField
                   name="LastName"
                   label="Last Name"
-                  placeholder="Last Name"
-                  variant="filled"
+                  variant="outlined"
+                  fullWidth
                   onChange={handleChange}
+                  required
                 />
               </>
             )}
-            <Input
+            <TextField
               name="username"
               label="Username"
-              placeholder="Username"
+              variant="outlined"
               type="text"
+              fullWidth
               onChange={handleChange}
+              required
             />
-            <Input
+            <TextField
               name="password"
               label="Password"
-              placeholder="Password"
-              handleShowPassword={handleShowPassword}
-              type={showPassword ? "text" : "password"}
+              variant="outlined"
+              fullWidth
+              type="password"
+              onChange={handleChange}
+              required
             />
             {isSignup && (
-              <Input
+              <TextField
                 name="confirmPassword"
-                label="repeatPassword"
-                placeholder="Repeat Password"
-                handleShowPassword={handleShowPassword}
-                type={showPassword ? "text" : "password"}
+                label="Repeat Password"
+                variant="outlined"
+                type="password"
+                fullWidth
+                onChange={handleChange}
+                required
               />
             )}
           </Grid>
-          <div className="flex justify-center mt-2 gap-5">
+          <div className="flex justify-center mt-8 gap-5">
             <Button variant="contained" color="inherit" onClick={handleClose}>
               Cancel
             </Button>
@@ -88,6 +99,15 @@ const Auth = () => {
               {isSignup ? "Sign Up" : "Sign In"}
             </Button>
           </div>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Button onClick={switchAuthMode}>
+                {isSignup
+                  ? "Already have an account Sign In"
+                  : " Dont have an account? Sign Up"}
+              </Button>
+            </Grid>
+          </Grid>
         </form>
       </Paper>
     </Container>
