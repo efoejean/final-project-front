@@ -15,8 +15,19 @@ const Auth = () => {
   const handleChange = (e) => {};
   const handleClose = () => {};
 
+  // initial state of the form
+  const intialState = {
+    FirstName: "",
+    LastName: "",
+    username: "",
+    Password: "",
+    confirmPassword: "",
+  };
+
   // use useState to set the iniital state of the button
   const [isSignup, setIsSignUp] = useState(false);
+
+  const [formData, setFormData] = useState({ intialState });
 
   // toggles between signup and signin
   const switchAuthMode = () => {
@@ -99,7 +110,7 @@ const Auth = () => {
               {isSignup ? "Sign Up" : "Sign In"}
             </Button>
           </div>
-          <Grid container justify="flex-end">
+          <Grid container justifyContent="flex-end">
             <Grid item>
               <Button onClick={switchAuthMode}>
                 {isSignup
