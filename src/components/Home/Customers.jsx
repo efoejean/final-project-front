@@ -11,6 +11,7 @@ const authAxios = axios.create({
 });
 
 const Customers = () => {
+  // use useState to set the current user
   const [customers, setCustomers] = useState([]);
 
   const navigate = useNavigate();

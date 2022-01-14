@@ -1,7 +1,6 @@
 import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import indexAuth from "../api/index";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -10,8 +9,9 @@ const Nav = () => {
 
   // logout function
   const logout = () => {
-    indexAuth.logout();
+    localStorage.removeItem("user");
     setUser(null);
+
     navigate("/");
   };
 
