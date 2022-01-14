@@ -1,9 +1,23 @@
 import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import indexAuth from "../api/index";
 
 const Nav = () => {
-  const user = null;
+  // use useState to set the current user
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+
+  // logout function
+  const logout = () => {
+    indexAuth.logout();
+    setUser(null);
+  };
+
+  useEffect(() => {
+    // const token = user?.data?.token;
+
+    setUser(JSON.parse(localStorage.getItem("user")));
+  }, []);
 
   return (
     <AppBar
@@ -21,13 +35,11 @@ const Nav = () => {
       <Toolbar>
         {user ? (
           <div className="">
-            <Avatar alt={user.result.name} src={user.result.imageUrl}>
-              user.name.charAt(0)
-            </Avatar>
+            <Avatar></Avatar>
             <Typography className="" variant="h6">
-              {user.result.name}
+              {}
             </Typography>
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="secondary" onClick={logout}>
               Logout
             </Button>
           </div>
