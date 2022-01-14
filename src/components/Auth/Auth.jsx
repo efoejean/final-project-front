@@ -34,10 +34,9 @@ const Auth = () => {
     if (isSignup) {
       try {
         await indexAuth.signup(formData).then(
-          (res) => {
-            console.log("signup success", res);
+          () => {
             navigate("/Customers");
-            window.location.reload();
+            // window.location.reload();
           },
           (err) => {
             console.log(err);
@@ -54,6 +53,7 @@ const Auth = () => {
           () => {
             navigate("/Customers");
             window.location.reload();
+            console.log("signin success");
           },
           (err) => {
             console.log(err);

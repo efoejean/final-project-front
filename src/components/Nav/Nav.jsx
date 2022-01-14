@@ -1,9 +1,10 @@
 import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import indexAuth from "../api/index";
 
 const Nav = () => {
+  const navigate = useNavigate();
   // use useState to set the current user
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
@@ -11,6 +12,7 @@ const Nav = () => {
   const logout = () => {
     indexAuth.logout();
     setUser(null);
+    navigate("/");
   };
 
   useEffect(() => {
