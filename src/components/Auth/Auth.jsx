@@ -35,8 +35,10 @@ const Auth = () => {
       try {
         await indexAuth.signup(formData).then(
           () => {
+            // ToDo: redirect to profile page , will need to add a profile page
+
             navigate("/customers");
-            // window.location.reload();
+            window.location.reload();
           },
           (err) => {
             console.log(err.message);
@@ -51,9 +53,10 @@ const Auth = () => {
       try {
         await indexAuth.signin(formData).then(
           () => {
+            // ToDo: redirect to profile page , will need to add a profile page
+
             navigate("/customers");
             window.location.reload();
-            console.log("signin success");
           },
           (err) => {
             console.log(err.message);
