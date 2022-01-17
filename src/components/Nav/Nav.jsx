@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Nav = () => {
   const navigate = useNavigate();
+
   // use useState to set the current user
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 

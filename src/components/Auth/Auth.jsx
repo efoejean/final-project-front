@@ -35,11 +35,11 @@ const Auth = () => {
       try {
         await indexAuth.signup(formData).then(
           () => {
-            navigate("/Customers");
+            navigate("/customers");
             // window.location.reload();
           },
           (err) => {
-            console.log(err);
+            console.log(err.message);
           }
         );
       } catch (error) {
@@ -51,12 +51,12 @@ const Auth = () => {
       try {
         await indexAuth.signin(formData).then(
           () => {
-            navigate("/Customers");
+            navigate("/customers");
             window.location.reload();
             console.log("signin success");
           },
           (err) => {
-            console.log(err);
+            console.log(err.message);
           }
         );
       } catch (error) {
