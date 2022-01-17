@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // create  a base url for the backend with axios and the token
+
 const authAxios = axios.create({
-  baseURL: "http://localhost:4000/api/",
+  baseURL: "http://localhost:4000/api",
   headers: {
-    Authorization: `Bearer ${JSON.parse(localStorage.getItem("user"))}`,
+    authorization: `Bearer ${JSON.parse(localStorage.getItem("user"))}`,
   },
 });
 
@@ -20,10 +21,10 @@ const Customers = () => {
     // use the base url and the token to get the data, use async to wait for the data to be returned
     (async () => {
       try {
-        const res = await authAxios.get("/customers");
-        setCustomers(res.data);
+        const result = await authAxios.post("/customers");
+        setCustomers(result.data);
       } catch (error) {
-        console.log(error);
+        console.log(error.message);
       }
     })();
   }, []);
@@ -31,10 +32,9 @@ const Customers = () => {
   // map through the customers and return the data
   return (
     <ul>
-      $
       {customers.map((customer) => (
         <li key={customer.id}>
-          <span>${customer.name}</span>
+          <span>{customer.name}</span>
         </li>
       ))}
     </ul>
